@@ -4,3 +4,5 @@ interface Client {
     delete?(): Promise<any>;
     update?(): Promise<any>;
 };
+
+export default Client;
