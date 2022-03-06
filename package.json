@@ -6,7 +6,9 @@
   "dependencies": {
     "tsup": "^5.11.13"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "vitest": "^0.5.9"
+  },
   "scripts": {
     "bundle": "./node_modules/.bin/tsup src/index.ts",
     "bundle:watch": "./node_modules/.bin/tsup src/index.ts --watch"
