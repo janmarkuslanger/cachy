@@ -1,15 +1,31 @@
 import Client, { Url, Parameter } from './client';
 import Message from './messages';
+import Cache from './cache';
+
+type Config = {
+    client: Client;
+    cache: Cache;
+};
 
 class Cachy {
     private client: Client;
+    private cache: Cache;
 
-    constructor(client: Client) {
-        if (!client) {
+    constructor(config: Config) {
+        if (!config) {
+            throw new Error(Message.NO_CONFIG_GIVEN);
+        }
+
+        if (!config.client) {
             throw new Error(Message.NO_CLIENT_GIVEN);
         }
 
-        this.client = client;
+        if (!config.cache) {
+            throw new Error(Message.NO_CACHE_GIVEN);
+        }
+
+        this.client = config.client;
+        this.cache = config.cache;
     }
 
     public async get(url: Url, parameter?: Parameter) {
