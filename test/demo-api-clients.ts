@@ -1,6 +1,6 @@
 import { Client } from '../src';
 
-const DemoApiClient: Client = {
+export const DemoApiClientWithGet: Client = {
     get(url, params) {
 
         if (url === '/demo') {
@@ -19,5 +19,3 @@ const DemoApiClient: Client = {
 
     }
 };
-
-export default DemoApiClient;
