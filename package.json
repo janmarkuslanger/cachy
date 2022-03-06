@@ -11,7 +11,9 @@
   },
   "scripts": {
     "bundle": "./node_modules/.bin/tsup src/index.ts",
-    "bundle:watch": "./node_modules/.bin/tsup src/index.ts --watch"
+    "bundle:watch": "./node_modules/.bin/tsup src/index.ts --watch",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "repository": {
     "type": "git",
