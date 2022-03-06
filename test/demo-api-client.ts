@@ -3,7 +3,7 @@ import { Client } from '../src';
 const DemoApiClient: Client = {
     get(url, params) {
 
-        if (url === 'demo') {
+        if (url === '/demo') {
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
                     resolve({ data: 1 });
@@ -18,4 +18,6 @@ const DemoApiClient: Client = {
         }) 
 
     }
-}
+};
+
+export default DemoApiClient;
