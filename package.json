@@ -8,7 +8,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "bundle": "./node_modules/.bin/tsup src/index.ts"
+    "bundle": "./node_modules/.bin/tsup src/index.ts",
+    "bundle:watch": "./node_modules/.bin/tsup src/index.ts --watch"
   },
   "repository": {
     "type": "git",
