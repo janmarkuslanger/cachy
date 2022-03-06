@@ -1,5 +1,7 @@
 import { Client } from '../src';
 
+export const DemoApiClientWithoutImplementation: Client = {};
+
 export const DemoApiClientWithGet: Client = {
     get(url, params) {
 

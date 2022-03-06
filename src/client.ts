@@ -1,5 +1,5 @@
-type Url = string;
-type Parameter = {
+export type Url = string;
+export type Parameter = {
     [key: string]: any;
 }
 
