@@ -8,6 +8,7 @@ enum Message {
     NO_GET_IMPLEMENTATION = 'Client has no GET implemenation',
     CACHE_ITEM_ALREADY_EXISTS = 'CacheItem already exists',
     NO_URL_GIVEN = 'No URL given',
+    NO_DATA_FOUND = 'No data found',
 };
 
 export default Message;
