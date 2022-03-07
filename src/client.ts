@@ -1,7 +1,7 @@
-export type Url = string;
-export type Parameter = {
-    [key: string]: any;
-}
+import {
+    Url,
+    Parameter
+} from './types.d';
 
 interface Client {
     get?(url: Url, parameter?: Parameter): Promise<any>;

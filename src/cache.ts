@@ -32,7 +32,11 @@ class Cache {
 
     public read(id: Id): Data {
         return this.items[id];
-    }
+    };
+
+    public purge(): void {
+        this.items = {};
+    };
 };
 
 export default Cache;

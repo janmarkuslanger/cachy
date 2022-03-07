@@ -56,3 +56,4 @@ test('should get an error trying to do a get request with a client without get i
     await expect(doRequest()).rejects.toThrowError(Message.NO_GET_IMPLEMENTATION);
 });
 
+

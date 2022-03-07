@@ -34,7 +34,7 @@ test('read id that doesnt exist should return undefined', () => {
     expect(respone).toBe(undefined);
 });
 
-test('add id to existing id should throw an error and not replace id', () => {
+test('add item to an existing item should throw an error and not replace id', () => {
     const cache = new Cache();
     cache.add('my-id', 1);
     
@@ -43,10 +43,21 @@ test('add id to existing id should throw an error and not replace id', () => {
     expect(respone).toBe(1);
 });
 
-test('add id to cache and replace it', () => {
+test('add item to cache and replace it should read the new value', () => {
     const cache = new Cache();
     cache.add('my-id', 1);
     cache.replace('my-id', 2);
     const respone = cache.read('my-id');
     expect(respone).toBe(2);
+});
+
+test('add multiple items and purge cache should clear cache and no items should be in it', () => {
+    const cache = new Cache();
+    cache.add('my-id', 1);
+    cache.add('my-id-2', 1);
+    cache.purge();
+    const response1 = cache.read('my-id');
+    const response2 = cache.read('my-id-2');
+    expect(response1).toBe(undefined);
+    expect(response2).toBe(undefined);
 });
