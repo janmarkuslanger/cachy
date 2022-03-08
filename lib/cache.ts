@@ -3,23 +3,33 @@ import { Response, Id } from './types.d';
 import CacheItem from './cache-item';
 import Storage from './storage';
 
+type Properties = {
+    storage: Storage;
+};
+
 abstract class Cache {
-    abstract handle(request: Request): Promise<Response>;
+    protected storage: Storage;
+
+    constructor({ storage }: Properties) {
+        this.storage = storage;
+    }
+
+    abstract handle(request: Request): Promise<Response|false>;
     
-    public async write({item, storage}: {item: CacheItem, storage: Storage}): Promise<boolean> {
+    public async write(item: CacheItem): Promise<boolean> {
         let writeState;
 
         try {
-            writeState = await storage.write(item);
+            writeState = await this.storage.write(item);
             return true;
         } catch (error) {
             return false;
         }
     };
 
-    public async read({id, storage}: {id: Id, storage: Storage }): Promise<Response|boolean> {
+    public async read(id: Id): Promise<Response|boolean> {
         try {
-            return await storage.read(id);
+            return await this.storage.read(id);
         } catch (error) {
             return false;
         }

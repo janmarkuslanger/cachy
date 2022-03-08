@@ -8,22 +8,17 @@ test('should throw error if cache is not assigned to cachy', () => {
     expect(() => { new Cachy() }).toThrowError(Errors.NO_CACHE_IN_CONSTRUCTOR);
 });
 
-test('should throw error if storage is not assigned to cachy', () => {
-    const testCache = new TestCache();
-    expect(() => { new Cachy({ cache: testCache }) }).toThrowError(Errors.NO_STORAGE_IN_CONSTRUCTOR);
-});
-
 test('should throw error if client is not assigned to cachy', () => {
-    const testCache = new TestCache();
     const testStorage = new TestStorage();
-    expect(() => { new Cachy({ cache: testCache, storage: testStorage }) }).toThrowError(Errors.NO_CLIENT_IN_CONSTRUCTOR);
+    const testCache = new TestCache({ storage: testStorage });
+    expect(() => { new Cachy({ cache: testCache }) }).toThrowError(Errors.NO_CLIENT_IN_CONSTRUCTOR);
 });
 
 test('Cachy.request should return a valid response', async () => {
-    const testCache = new TestCache();
     const testStorage = new TestStorage();
+    const testCache = new TestCache({ storage: testStorage });
     const testClient = new TestClient();
-    const cachy = new Cachy({ cache: testCache, storage: testStorage, client: testClient });
+    const cachy = new Cachy({ cache: testCache, client: testClient });
 
     const responseGetUrl = await cachy.request({
         method: 'get',
