@@ -2,6 +2,8 @@ import Cache from './cache';
 import Storage from './storage';
 import Client from './client';
 import Errors from './errors';
+import Request from './request';
+import { RequestProperties } from './types.d';
 
 type Config = {
     cache: Cache;
@@ -29,6 +31,17 @@ class Cachy {
 
         this.cache = config.cache;
         this.storage = config.storage;
+        this.client = config.client;
+    }
+
+    public async request({ url, method, data }: RequestProperties) {
+        const request = new Request({
+            url,
+            method,
+            data,
+        });
+
+        return await this.client.request(request);
     }
 };
 
