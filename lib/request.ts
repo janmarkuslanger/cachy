@@ -38,6 +38,10 @@ class Request {
     public setInfo(info: RequestInfo): void {
         this.info = info;
     }
+
+    public generateId(): string {
+        return `${this.method}-${this.url}`;
+    }
 };
 
 export default Request;
