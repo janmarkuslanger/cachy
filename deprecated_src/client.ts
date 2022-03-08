@@ -1,7 +1,7 @@
 import {
     Url,
     Parameter
-} from './types.d';
+} from './types';
 
 interface Client {
     get?(url: Url, parameter?: Parameter): Promise<any>;

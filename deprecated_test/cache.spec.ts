@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
-import { Cache } from '../src';
-import Message from '../src/messages';
+import { Cache } from '../deprecated_src';
+import Message from '../deprecated_src/messages';
 
 test('create cache', () => {
     const cache = new Cache();
