@@ -10,8 +10,8 @@
     "vitest": "^0.5.9"
   },
   "scripts": {
-    "bundle": "./node_modules/.bin/tsup src/index.ts",
-    "bundle:watch": "./node_modules/.bin/tsup src/index.ts --watch",
+    "bundle": "./node_modules/.bin/tsup lib/index.ts",
+    "bundle:watch": "./node_modules/.bin/tsup lib/index.ts --watch",
     "test": "vitest",
     "coverage": "vitest run --coverage"
   },
