@@ -6,6 +6,10 @@ export type RequestData = {
     [key: string]: any;
 };
 
+export type Id = string;
+
+export type Response = any;
+
 export type RequestInfo = {
     [key: string]: any;
 }
