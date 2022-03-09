@@ -26,17 +26,19 @@ class Cachy {
         this.client = config.client;
     }
 
-    public async request({ url, method, data }: RequestProperties) {
+    public async request({ url, method, data }: RequestProperties): Promise<any> {
         const request = new Request({
             url,
             method,
             data,
         });
 
-        const response = await this.cache.handle(request);
+        const requestId = request.generateId();
+        const responseFromCache = await this.cache.handle({id: requestId, request});
+        const responseThroughCacheSuccess = responseFromCache !== false;
 
-        if (response !== false) {
-            return response;
+        if (responseThroughCacheSuccess) {
+            return responseFromCache;
         }
 
         return await this.client.request(request);
