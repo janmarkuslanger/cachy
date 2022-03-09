@@ -12,10 +12,10 @@ export type Response = any;
 
 export type RequestInfo = {
     [key: string]: any;
-}
+};
 
 export type RequestProperties = {
     method: Method;
     url: Url;
     data?: RequestData;
-}
+};

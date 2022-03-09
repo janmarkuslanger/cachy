@@ -2,16 +2,22 @@ import Cache from './cache';
 import Client from './client';
 import Errors from './errors';
 import Request from './request';
-import { RequestProperties } from './types.d';
+import { RequestProperties, Id } from './types.d';
+
+type Options = {
+    generateId?: (request: Request) => Id; 
+}
 
 type Config = {
     cache: Cache;
     client: Client;
+    options?: Options;
 };
 
 class Cachy {
     private cache: Cache;
     private client: Client;
+    private options?: Options;
 
     constructor(config: Config) {
         if (!config?.cache) {
@@ -24,6 +30,7 @@ class Cachy {
 
         this.cache = config.cache;
         this.client = config.client;
+        this.options = config.options;
     }
 
     public async request({ url, method, data }: RequestProperties): Promise<any> {
@@ -33,7 +40,13 @@ class Cachy {
             data,
         });
 
-        const requestId = request.generateId();
+        let requestId = request.generateId();
+        const hasCustomIdFunction = !!this.options?.generateId;
+
+        if (hasCustomIdFunction) {
+            requestId = this.options.generateId(request);
+        }
+
         const responseFromCache = await this.cache.handle({id: requestId, request});
         const responseThroughCacheSuccess = responseFromCache !== false;
 
