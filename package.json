@@ -3,16 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "lib/index.ts",
-  "dependencies": {
-    "tsup": "^5.11.13"
-  },
   "devDependencies": {
-    "vitest": "^0.5.9"
+    "vitest": "^0.5.9",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4",
+    "webpack": "^5.70.0",
+    "tsup": "^5.11.13"
   },
   "scripts": {
     "bundle": "./node_modules/.bin/tsup lib/index.ts",
     "bundle:watch": "./node_modules/.bin/tsup lib/index.ts --watch",
-    "demo:watch": "./node_modules/.bin/tsup demo/demo.ts --watch",
+    "demo:watch": "./node_modules/.bin/tsup public/demo.ts --watch",
+    "demo-server": "npx webpack serve demo",
     "test": "vitest",
     "coverage": "vitest run --coverage"
   },
