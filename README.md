@@ -205,3 +205,30 @@ After the first request, every following click will get the result from cache.
 Afer 60 seconds it will refetch the data from the api. 
 
 # API
+
+```mermaid
+classDiagram
+    class Storage
+    <<interface>> Storage
+    Storage: read()
+    Storage: write()
+    
+    class Cache
+    <<abstract>> Cache
+    Cache: -Storage storage
+    Cache: handle()
+    Cache: write()
+    Cache: read()
+
+    Cache --> Storage
+    
+    class Client
+    <<interface>> Client
+
+    class Cachy
+    Cachy: -Cache cache
+    Cachy: -Client client
+    Cachy --> Cache
+    Cachy --> Client
+
+```

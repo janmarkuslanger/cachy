@@ -1,5 +1,5 @@
 import CacheItem from './cache-item';
-import { Id, Response } from './types.d';
+import { Id } from './types.d';
 
 interface Storage {
     write({id, item} : {id: Id, item: CacheItem}): Promise<boolean>;
