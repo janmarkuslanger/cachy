@@ -40,7 +40,7 @@ class Cachy {
             data,
         });
 
-        let requestId = request.generateId();
+        let requestId = `${request.method}-${request.url}`;
         const hasCustomIdFunction = !!this.options?.generateId;
 
         if (hasCustomIdFunction) {
@@ -54,7 +54,8 @@ class Cachy {
             return responseFromCache;
         }
 
-        return await this.client.request(request);
+        const response = await this.client.request(request);
+        return await this.cache.handle({id: requestId, request, response });
     }
 };
 

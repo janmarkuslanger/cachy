@@ -6,7 +6,6 @@ class TestCache extends Cache {
     }
 
     public async handle(request) {
-        console.log(this.storage)
         return false;
     }
 };

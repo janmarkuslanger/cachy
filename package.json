@@ -13,8 +13,9 @@
   "scripts": {
     "bundle": "./node_modules/.bin/tsup lib/index.ts",
     "bundle:watch": "./node_modules/.bin/tsup lib/index.ts --watch",
-    "demo:watch": "./node_modules/.bin/tsup public/demo.ts --watch",
+    "demo:watch": "./node_modules/.bin/tsup public/demo.ts --watch --onSuccess \"npm run demo-copy\"",
     "demo-server": "npx webpack serve demo",
+    "demo-copy": "cp dist/demo.js public/index.js",
     "test": "vitest",
     "coverage": "vitest run --coverage"
   },

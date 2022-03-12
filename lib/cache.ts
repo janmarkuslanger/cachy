@@ -14,9 +14,9 @@ abstract class Cache {
         this.storage = storage;
     }
 
-    abstract handle({id, request}: {id: Id, request: Request}): Promise<Response|false>;
+    abstract handle({id, request, response}: {id: Id, request: Request, response?: Response}): Promise<Response|false>;
     
-    public async write({id, item } :{id: Id, item: CacheItem}): Promise<boolean> {
+    protected async write({id, item } :{id: Id, item: CacheItem}): Promise<boolean> {
         let writeCacheSuccess = false;
 
         try {
@@ -28,16 +28,12 @@ abstract class Cache {
         return writeCacheSuccess;
     };
 
-    public async read({ id }: {id: Id}): Promise<Response|boolean> {
-        let readCacheSuccess = false;
-
+    protected async read({ id }: {id: Id }): Promise<CacheItem|false> {
         try {
-            readCacheSuccess = await this.storage.read({id});
+            return await this.storage.read({id });
         } catch (error) {
-            readCacheSuccess = false;
+            return false
         }
-
-        return readCacheSuccess;
     }
 };
 

@@ -7,7 +7,7 @@ test('creating a request should generate correct data', () => {
         method: 'get'
     });
 
-    expect(request.getInfo()).toMatchObject({});
-    expect(request.getUrl()).toBe('test');
-    expect(request.getMethod()).toBe('get');
+    expect(request.info).toMatchObject({});
+    expect(request.url).toBe('test');
+    expect(request.method).toBe('get');
 });

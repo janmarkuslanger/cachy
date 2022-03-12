@@ -7,8 +7,8 @@ type Properties = {
 };
 
 class CacheItem {
-    private request: Request;
-    private response: Response;
+    public request: Request;
+    public response: Response;
 
     constructor({ request, response }: Properties) {
         this.request = request;
