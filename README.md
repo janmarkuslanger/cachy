@@ -206,6 +206,10 @@ Afer 60 seconds it will refetch the data from the api.
 
 # API
 
+# Implementations
+
+# Design
+
 ```mermaid
 classDiagram
     class Storage
