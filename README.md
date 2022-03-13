@@ -204,6 +204,24 @@ As you can see in the network panel:
 After the first request, every following click will get the result from cache. 
 Afer 60 seconds it will refetch the data from the api. 
 
+> Every request needs an ID. By default the ID is based on the url and method. 
+
+If you need to create special ID based on the request. You can pass a custom function to the `Cachy.options` object.
+
+In our example we want to fetch user data. This could be an ID for post request that get user data from a specific user. 
+The user would be passed into the body e.g. `https://nice-users.com/user` `{data: 'jan'}`. 
+
+``` typscript
+const apiClient = new Cachy({
+    cache,
+    client,
+    options: {
+        generateId(request) {
+            return `${request.url}-${request.data.user}`
+        }
+    }
+});
+
 # API
 
 # Implementations
