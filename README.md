@@ -232,7 +232,7 @@ classDiagram
     class Cachy
     Cachy: -Cache cache
     Cachy: -Client client
-    Cachy --> Cache
-    Cachy --> Client
+    Cachy *-- Cache
+    Cachy *-- Client
 
 ```
