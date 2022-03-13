@@ -1,3 +1,5 @@
+<p align="center"><img src="logo.svg" /></p>
+
 # cachy
 
 Cachy adds a caching layer to your javascript clients. 
