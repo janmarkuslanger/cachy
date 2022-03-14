@@ -227,6 +227,7 @@ const apiClient = new Cachy({
         }
     }
 });
+```
 
 # API
 
