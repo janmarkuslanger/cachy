@@ -217,7 +217,7 @@ If you need to create special ID based on the request. You can pass a custom fun
 In our example we want to fetch user data. This could be an ID for post request that get user data from a specific user. 
 The user would be passed into the body e.g. `https://nice-users.com/user` `{data: 'jan'}`. 
 
-``` typscript
+``` typescript
 const apiClient = new Cachy({
     cache,
     client,
